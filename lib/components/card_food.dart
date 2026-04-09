@@ -37,6 +37,7 @@ class CardFood extends StatelessWidget {
         ),
         //Card Text
         Container(
+          height: 70,
           margin: EdgeInsets.only(top: 10),
           decoration: BoxDecoration(
             color: AppColorsStyles.glassGrey,
@@ -60,7 +61,7 @@ class CardFood extends StatelessWidget {
                   '${minutes.toString()} min | ${difficulty.label}',
                   style: TextStyle(
                     color: AppColorsStyles.white,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.normal,
                     fontSize: 14,
                   ),
                 ),

@@ -16,34 +16,76 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            buildHeader(),
-            SizedBox(
-              height: 10,
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Header
+                buildHeader(),
+                SizedBox(
+                  height: 10,
+                ),
+                // Search bar
+                buildSearchBar(),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  'Today Recipe',
+                  style: AppTextStyles.headlineTextStyle(22),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+              ],
             ),
-            buildSearchBar(),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              'Today Recipe',
-              style: AppTextStyles.headlineTextStyle(22),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            CardFood(
-              image: 'assets/images/pizza.jpg',
-              title: 'Pizza Burger',
-              minutes: 30,
-              difficulty: FoodDifficulty.easy,
-            ),
-          ],
-        ),
+          ),
+          //Carousel Foods
+          buildCarouselFood(),
+        ],
+      ),
+    );
+  }
+
+  SizedBox buildCarouselFood() {
+    return SizedBox(
+      width: double.infinity,
+      height: 400,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
+        children: [
+          SizedBox(
+            width: 14,
+          ),
+          CardFood(
+            image: 'assets/images/burger.jpg',
+            title: 'Cheese Burger',
+            minutes: 12,
+            difficulty: FoodDifficulty.easy,
+          ),
+          SizedBox(
+            width: 14,
+          ),
+          CardFood(
+            image: 'assets/images/pizza.jpg',
+            title: 'Pizza Margarita',
+            minutes: 25,
+            difficulty: FoodDifficulty.easy,
+          ),
+          SizedBox(
+            width: 14,
+          ),
+          CardFood(
+            image: 'assets/images/pasta.jpg',
+            title: 'Pasta Carbon',
+            minutes: 30,
+            difficulty: FoodDifficulty.hard,
+          ),
+        ],
       ),
     );
   }
