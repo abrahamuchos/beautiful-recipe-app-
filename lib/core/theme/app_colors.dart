@@ -5,6 +5,7 @@ class AppColorsStyles {
   //Basic
   static const Color black = Colors.black;
   static const Color white = Colors.white;
+  static const Color green = Colors.green;
 
   //Blues
   static const Color lightBlue = Color.fromARGB(41, 33, 149, 243);

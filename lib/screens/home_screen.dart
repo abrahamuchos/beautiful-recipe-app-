@@ -1,9 +1,10 @@
-import 'package:beautiful_recipe_app/components/card_food.dart';
-import 'package:beautiful_recipe_app/core/enums/food_difficulty.dart';
+import 'package:beautiful_recipe_app/components/horizontal_card_food.dart';
 import 'package:flutter/material.dart';
 
 import 'package:beautiful_recipe_app/core/theme/app_colors.dart';
 import 'package:beautiful_recipe_app/core/theme/app_texts.dart';
+import 'package:beautiful_recipe_app/components/card_food.dart';
+import 'package:beautiful_recipe_app/core/enums/food_difficulty.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,44 +17,98 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Header
-                buildHeader(),
-                SizedBox(
-                  height: 10,
-                ),
-                // Search bar
-                buildSearchBar(),
-                SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  'Today Recipe',
-                  style: AppTextStyles.headlineTextStyle(22),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-              ],
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Header
+                  buildHeader(),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  // Search bar
+                  buildSearchBar(),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'Today Recipe',
+                    style: AppTextStyles.headlineTextStyle(22),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                ],
+              ),
             ),
-          ),
-          //Carousel Foods
-          buildCarouselFood(),
-        ],
+            //Carousel Foods
+            buildCarouselFood(),
+            SizedBox(
+              height: 10,
+            ),
+            //Recommended Foods
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              child: buildRecommended(),
+            ),
+          ],
+        ),
       ),
+    );
+  }
+
+  Column buildRecommended() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Recommended',
+          style: AppTextStyles.headlineTextStyle(22),
+        ),
+        SizedBox(
+          height: 5,
+        ),
+        // Horizontal Card
+        HorizontalCard(
+          image: 'assets/images/muffin.jpg',
+          title: 'Muffin',
+          author: 'Abraham',
+          difficulty: FoodDifficulty.medium,
+          minutes: 30,
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        HorizontalCard(
+          image: 'assets/images/sandwich.jpg',
+          title: 'Sandwich',
+          author: 'Jesus',
+          difficulty: FoodDifficulty.easy,
+          minutes: 30,
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        HorizontalCard(
+          image: 'assets/images/muffin.jpg',
+          title: 'Muffin',
+          author: 'Abraham',
+          difficulty: FoodDifficulty.medium,
+          minutes: 30,
+        ),
+      ],
     );
   }
 
   SizedBox buildCarouselFood() {
     return SizedBox(
       width: double.infinity,
-      height: 400,
+      height: 260,
       child: ListView(
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
@@ -65,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
             image: 'assets/images/burger.jpg',
             title: 'Cheese Burger',
             minutes: 12,
-            difficulty: FoodDifficulty.easy,
+            difficulty: FoodDifficulty.medium,
           ),
           SizedBox(
             width: 14,
