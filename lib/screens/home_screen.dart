@@ -101,6 +101,17 @@ class _HomeScreenState extends State<HomeScreen> {
           difficulty: FoodDifficulty.medium,
           minutes: 30,
         ),
+        SizedBox(
+          height: 10,
+        ),
+        HorizontalCard(
+          image: 'assets/images/muffin.jpg',
+          title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu lacus aliquet, gravida felis eget, ultricies sem. Aliquam viverra eleifend dui, sit amet ultricies magna tempus eget.',
+          author: 'Abraham',
+          difficulty: FoodDifficulty.medium,
+          minutes: 30,
+        ),
+
       ],
     );
   }

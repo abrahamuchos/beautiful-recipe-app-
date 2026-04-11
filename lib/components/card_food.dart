@@ -1,5 +1,6 @@
 import 'package:beautiful_recipe_app/core/enums/food_difficulty.dart';
 import 'package:beautiful_recipe_app/core/theme/app_colors.dart';
+import 'package:beautiful_recipe_app/core/utils/text_format.dart';
 import 'package:flutter/material.dart';
 
 class CardFood extends StatelessWidget {
@@ -49,7 +50,7 @@ class CardFood extends StatelessWidget {
               children: [
                 //Card Text Title
                 Text(
-                  title,
+                  TextFormat.truncate(title, 15),
                   style: TextStyle(
                     color: AppColorsStyles.white,
                     fontWeight: FontWeight.bold,

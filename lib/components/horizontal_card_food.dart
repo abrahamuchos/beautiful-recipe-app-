@@ -1,4 +1,5 @@
 import 'package:beautiful_recipe_app/core/enums/food_difficulty.dart';
+import 'package:beautiful_recipe_app/core/utils/text_format.dart';
 import 'package:flutter/material.dart';
 
 import 'package:beautiful_recipe_app/core/theme/app_colors.dart';
@@ -42,7 +43,7 @@ class HorizontalCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              title,
+              TextFormat.truncate(title, 15),
               style: AppTextStyles.headlineTextStyle(16),
             ),
             Text(
