@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:beautiful_recipe_app/screens/home_screen.dart';
+import 'package:beautiful_recipe_app/screens/food_detail_screen.dart';
 import 'package:beautiful_recipe_app/screens/onboarding_screen.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Beautiful Recipe',
       // home: OnboardingScreen(),
-      home: HomeScreen(),
+      home: FoodDetailScreen(),
     );
   }
 }

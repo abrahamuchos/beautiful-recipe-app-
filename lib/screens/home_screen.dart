@@ -160,7 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return TextField(
       decoration: InputDecoration(
         filled: true,
-        fillColor: AppColorsStyles.lightBlue,
+        fillColor: AppColorsStyles.marineBlue,
         hintText: "Search Recipe...",
         hintStyle: TextStyle(
             fontSize: 18,
