@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
+
 import 'package:beautiful_recipe_app/components/card_food_icon.dart';
 import 'package:beautiful_recipe_app/core/theme/app_colors.dart';
 import 'package:beautiful_recipe_app/core/theme/app_texts.dart';
-import 'package:flutter/material.dart';
 
 class FoodDetailScreen extends StatefulWidget {
   const FoodDetailScreen({super.key});
@@ -31,8 +32,9 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
               child: Container(
                 margin: EdgeInsets.only(top: 45, left: 16),
                 decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(100)),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(100),
+                ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Icon(
