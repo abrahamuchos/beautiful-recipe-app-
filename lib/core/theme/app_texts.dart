@@ -9,9 +9,9 @@ class AppTextStyles {
     fontSize: 16,
   );
 
-  static TextStyle headlineTextStyle(double size) {
+  static TextStyle headlineTextStyle(double size, {Color color = AppColorsStyles.black}) {
     return TextStyle(
-      color: AppColorsStyles.black,
+      color: color,
       fontSize: size,
       fontFamily: 'Fredoka',
       fontWeight: FontWeight.bold,
