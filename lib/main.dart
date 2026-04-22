@@ -27,8 +27,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Beautiful Recipe',
       // home: OnboardingScreen(),
-      // home: AddRecipeScreen(),
-      home: SignupScreen(),
+      home: AddRecipeScreen(),
+      // home: SignupScreen(),
     );
   }
 }
