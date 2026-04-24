@@ -26,9 +26,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Beautiful Recipe',
-      // home: OnboardingScreen(),
-      home: AddRecipeScreen(),
-      // home: SignupScreen(),
+      home: HomeScreen(),
     );
   }
 }

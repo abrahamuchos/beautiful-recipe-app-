@@ -1,10 +1,11 @@
+import 'package:beautiful_recipe_app/components/card_food.dart';
 import 'package:beautiful_recipe_app/components/horizontal_card_food.dart';
-import 'package:flutter/material.dart';
-
+import 'package:beautiful_recipe_app/core/enums/food_difficulty.dart';
 import 'package:beautiful_recipe_app/core/theme/app_colors.dart';
 import 'package:beautiful_recipe_app/core/theme/app_texts.dart';
-import 'package:beautiful_recipe_app/components/card_food.dart';
-import 'package:beautiful_recipe_app/core/enums/food_difficulty.dart';
+import 'package:beautiful_recipe_app/services/database.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,6 +15,54 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  Stream? recipeStream;
+
+  getOnTheLoad() async {
+    recipeStream = await DatabaseMethods().getAllRecipe();
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    getOnTheLoad();
+  }
+
+  Widget allRecipe() {
+    return StreamBuilder(
+        stream: recipeStream,
+        builder: (context, AsyncSnapshot snapshot) {
+          return snapshot.hasData
+              ? ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemCount: snapshot.data.docs.length,
+                  itemBuilder: (context, index) {
+                    DocumentSnapshot ds = snapshot.data.docs[index];
+                    return Row(
+                      children: [
+                        CardFood(
+                          image: 'assets/images/pizza.jpg',
+                          title: ds["Recipe"],
+                          minutes: ds['Time'],
+                          difficulty: FoodDifficulty.easy,
+                        ),
+                        SizedBox(
+                          width: 14,
+                        ),
+                      ],
+                    );
+                  },
+                )
+              : Column(
+                  children: [
+                    Text('Not Data'),
+                  ],
+                );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +96,12 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             //Carousel Foods
-            buildCarouselFood(),
+            // buildCarouselFood(),
+            SizedBox(
+              width: double.infinity,
+              height: 260,
+              child: allRecipe(),
+            ),
             SizedBox(
               height: 10,
             ),
@@ -106,12 +160,12 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         HorizontalCard(
           image: 'assets/images/muffin.jpg',
-          title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu lacus aliquet, gravida felis eget, ultricies sem. Aliquam viverra eleifend dui, sit amet ultricies magna tempus eget.',
+          title:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu lacus aliquet, gravida felis eget, ultricies sem. Aliquam viverra eleifend dui, sit amet ultricies magna tempus eget.',
           author: 'Abraham',
           difficulty: FoodDifficulty.medium,
           minutes: 30,
         ),
-
       ],
     );
   }
